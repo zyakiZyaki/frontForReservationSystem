@@ -34,7 +34,7 @@ function createForm() {
         hideResponseValidation()
     })
 
-    return form
+    return { form, name, pass, url }
 }
 
 function showResponseValidation(resp) {
@@ -52,10 +52,5 @@ function showResponseValidation(resp) {
 
 function hideResponseValidation() {
     const response = document.querySelector(".response")
-    if (response) {
-        return response.remove()
-    }
-    else {
-        return
-    }
+    return response ? response.remove() : null
 }

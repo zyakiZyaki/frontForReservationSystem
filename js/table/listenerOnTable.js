@@ -19,17 +19,17 @@ function addListenersOnTableBody(tbody) {
             return createModalForm(await fetchingDataById(e.target.id), e.target.id)
         }
         if (!e.target.id && e.target.classList[0] != 'check') {
-            const data = {}
-            const day = e.srcElement.cellIndex
-            data.roomId = e.target.parentNode.firstChild.id,
-            data.checkIn = toUsualDateFromIso(day)
-            data.checkOut = toUsualDateFromIso(day, 3)
-            return createModalForm(data)
+            const daysFromFirstDay = e.srcElement.cellIndex
+            return createModalForm({
+                "roomId": e.target.parentNode.firstChild.id,
+                "checkIn": countingDate(daysFromFirstDay),
+                "checkOut": countingDate(daysFromFirstDay, 3)
+            })
         }
     })
 }
 
-function toUsualDateFromIso(day, checkOut) {
+function countingDate(day, checkOut) {
     let hours = 17
     if(checkOut) {
         day+=checkOut

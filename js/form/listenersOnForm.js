@@ -14,7 +14,7 @@ function createListenersOnForm(form, modalWindow, close, id) {
 function createListenerOnSubmit(form, modalWindow, id) {
     form.addEventListener('submit', async e => {
         e.preventDefault()
-        if(e.submitter.className === 'delete') {
+        if (e.submitter.className === 'delete') {
             modalWindow.remove()
             return reloadPageOn(await deleteBooking(id))
         }
@@ -34,12 +34,7 @@ function createListenerOnClose(close, modalWindow) {
 function createDataForFetch(inputs) {
     const obj = {}
     inputs.forEach(el => {
-        if (el.id === "meet") {
-            obj[el.id] = el.checked
-        }
-        else {
-            obj[el.id] = el.value
-        }
+        return el.id === "meet" ? obj[el.id] = el.checked : obj[el.id] = el.value
     })
     return obj
 }
@@ -52,7 +47,7 @@ async function reloadPageOn(id) {
 }
 
 function scrollOn(id) {
-    setTimeout(() => {
+    return setTimeout(() => {
         const element = document.getElementById(id);
         element.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" })
     }, 300)

@@ -7,12 +7,12 @@ export { createModalForm }
 
 async function createModalForm(data, id) {
 
-    const modalWindow = createHtmlFrameOfmodalWindow()
+    const { wrap, form, close } = createHtmlFrameOfmodalWindow()
 
-    createContentsFormByFormData(data, modalWindow.form)
-    createRightPartOfModalWindow(data, modalWindow.wrap)
+    createContentsFormByFormData(data, form)
+    createRightPartOfModalWindow(data, wrap)
 
-    return createListenersOnForm(modalWindow.form, modalWindow.wrap, modalWindow.close, id)
+    return createListenersOnForm(form, wrap, close, id)
 
 }
 

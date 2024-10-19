@@ -7,12 +7,12 @@ export default renderTable
 
 function renderTable() {
 
-    const table = createHtmlFrameOfTable()
+    const { thead, tbody } = createHtmlFrameOfTable()
 
     const firstDay = new Date(2025, 5, 1).getTime()
     const endDay = new Date(2025, 9, 1).getTime()
 
-    return fillTableByData(firstDay, endDay, table.thead, table.tbody)
+    return fillTableByData(firstDay, endDay, thead, tbody)
 }
 
 async function fillTableByData(firstDay, endDay, thead, tbody) {
@@ -103,5 +103,5 @@ function createHtmlFrameOfTable() {
     const tbody = document.createElement('tbody')
     table.append(tbody)
 
-    return {thead, tbody}
+    return { thead, tbody }
 }
